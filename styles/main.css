@@ -112,13 +112,7 @@ footer {
 }
 .text {
     position: relative;
-    /* left: 0;
-    top: 0;
-    transform: none;
-    padding: 0;
-    height: inherit; */
     text-align: center;
-
     height: inherit;
 }
 .text > iframe {

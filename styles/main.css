@@ -28,8 +28,9 @@ ul {
 ul li {
     padding-bottom: 40px;
 }
-h4 {
-    padding-bottom: 30px;
+h3 {
+    margin: 0;
+    padding: 30px 0;
 }
 ul li span {
     color: #aaa;

@@ -169,8 +169,7 @@ try {
     }
 
     function github() {
-        text.classList.remove('hello');
-        text.innerHTML = '<iframe name="github" src="https://github.com/merowing"></iframe>'
+        window.open('https://github.com/merowing', '_blank');
     }
 
     function help() {

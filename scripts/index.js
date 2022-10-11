@@ -134,6 +134,7 @@ try {
 
     recognition.addEventListener('error' , (e) => {
         console.log('error');
+        alert();
         errorActive = true;
         let errorMessage = (e.error) ? 
                 'Audio capture blocked' :
@@ -142,11 +143,11 @@ try {
         stop(errorMessage);
     });
 
-    recognition.addEventListener('end', (e) => {
-        if(!errorActive) {
-            stop();
-        }
-    });
+    // recognition.addEventListener('end', (e) => {
+    //     if(!errorActive) {
+    //         stop();
+    //     }
+    // });
 
     voiceButton.addEventListener('click', () => {
         if(voiceButton.classList.contains('active')) {

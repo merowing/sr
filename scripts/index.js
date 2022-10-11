@@ -195,8 +195,9 @@ try {
 function initMap() {
     text.classList.remove('hello');
     text.innerHTML = `<div id="map"></div>`;
-
-    const map = new google.maps.Map(document.querySelector('#map'), {
+    const mapBlock = document.querySelector('#map');
+    
+    const map = new google.maps.Map(mapBlock, {
         center: { lat: -34.397, lng: 150.644 },
         zoom: 6,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -237,3 +238,4 @@ function geolocation(map) {
         alert(`Geolocation API doesn't support your browser!`);
     }
 }
+initMap();

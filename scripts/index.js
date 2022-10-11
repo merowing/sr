@@ -21,6 +21,7 @@ try {
 
     let helpCommandsHtml = null;
     function help() {
+        alert('help');
         if(helpCommandsHtml) return helpCommandsHtml;
 
         function inner() {

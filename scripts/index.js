@@ -194,6 +194,7 @@ try {
 
 function initMap() {
     text.classList.remove('hello');
+    text.innerHTML = `<div id="map"></div>`;
 
     const map = new google.maps.Map(document.querySelector('#map'), {
         center: { lat: -34.397, lng: 150.644 },

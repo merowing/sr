@@ -9,7 +9,6 @@ const mapBlock = document.querySelector('#map');
 
 voiceButton.innerHTML = microphone;
 smallvoiceButton.innerHTML = microphone;
-text.innerHTML = helloScreen();
 
 let errorActive = false;
 
@@ -86,7 +85,7 @@ try {
 
             said.innerText = str;
 
-            let command = transcript(results, wordIndex);
+            let command = transcript(str);
 
             const kottansErrors = ['cortana', 'cotons', 'cottons', 'buttons', 'cartoons', 'kittens', 'curtains'];
             if(kottansErrors.includes(command.split(' ')[1])) {
@@ -174,8 +173,9 @@ try {
     function helloScreen() {
         //voiceButton.classList.remove('hidden');
         //smallvoiceButton.classList.add('hidden');
-        return `Say <em>'Help'</em> to show commands.`;
+        return `Tap microphone icon and<br> say <em>'Help'</em> to show commands.`;
     }
+    text.innerHTML = helloScreen();
 
     function stop() {
         //text.classList.remove('hidden');
@@ -204,11 +204,11 @@ try {
             `;
     }
 
-    function transcript(results, index) {
+    function transcript(str) {
         //const index = results.length - 1;
-        const str = results[index][0].transcript.toLowerCase();
+        //const str = results[index][0].transcript.toLowerCase();
 
-        return str.match(/[\w\s]+/g)[0];
+        return str.toLowerCase().match(/[\w\s]+/g)[0];
     }
 
 } catch(error) {

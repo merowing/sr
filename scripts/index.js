@@ -90,7 +90,7 @@ try {
                 command = 'hello kottans';
             }
 
-            close();
+            //close();
             switch(command) {
                 case 'close':
                     text.innerHTML = helloScreen();
@@ -151,6 +151,7 @@ try {
 
     voiceButton.addEventListener('click', () => {
         if(voiceButton.classList.contains('active')) {
+            alert(1);
            stop();
         }else {
             errorActive = false;

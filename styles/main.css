@@ -24,9 +24,11 @@ h4 {
 }
 ul {
     list-style: none;
+    padding: 0 30px;
 }
 ul li {
-    padding-bottom: 40px;
+    padding: 20px 0;
+    border-top: 1px solid whitesmoke;
 }
 h3 {
     margin: 0;

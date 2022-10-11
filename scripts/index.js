@@ -5,12 +5,12 @@ const text = document.querySelector('.text');
 //const said = document.querySelector('.said');
 const voiceButton = document.querySelector('.voice-button');
 //const smallvoiceButton = document.querySelector('.small-voice-button');
-const mapBlock = document.querySelector('#map');
+//const mapBlock = document.querySelector('#map');
 
 voiceButton.innerHTML = microphoneIcon;
 //smallvoiceButton.innerHTML = microphone;
 
-let errorActive = false;
+//let errorActive = false;
 
 try {
     const recognition = new webkitSpeechRecognition();
@@ -52,8 +52,9 @@ try {
             ];
             
             const list = commands.reduce((str, current) => {
+                const names = current.name.split(', ').map(val => `[ ${ val } ]`).join('<br>');
                 str += `<li>
-                            <span>[ ${current.name} ]</span>
+                            <span>${names}</span><br>
                             <span>${current.description}</span>
                         </li>`;
                 return str;
@@ -142,17 +143,13 @@ try {
     });
 
     recognition.addEventListener('end', (e) => {
-        if(!errorActive) {
-            stop();
-        }
+        stop();
     });
 
     voiceButton.addEventListener('click', () => {
         if(voiceButton.classList.contains('active')) {
            stop();
         }else {
-            errorActive = false;
-            //text.innerHTML = helloScreen();
             voiceButton.classList.add('active');
             recognition.start();
         }
@@ -178,25 +175,13 @@ try {
     }
 
     function helloScreen() {
-        //voiceButton.classList.remove('hidden');
-        //smallvoiceButton.classList.add('hidden');
         text.classList.add('hello');
         return `<h3>Hi!</h3>Tap the microphone icon and<br> say <strong>'Help'</strong> to show commands.`;
     }
     text.innerHTML = helloScreen();
 
     function stop() {
-        //text.classList.remove('hidden');
         voiceButton.classList.remove('active');
-        //text.classList.add('hello');
-        //voiceButton.classList.remove('hidden');
-        //smallvoiceButton.classList.add('hidden');
-        //mapBlock.classList.add('hidden');
-
-        //text.innerHTML = message;
-        //said.innerHTML = '';
-        //text.innerHTML = helloScreen();
-        //text.classList.remove('help');
 
         recognition.stop();
     }
@@ -252,7 +237,7 @@ function initMap() {
     //     }
     // });
 
-    geolocation(map);
+    //geolocation(map);
 }
 
 // window.initMap = initMap;

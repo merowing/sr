@@ -102,7 +102,7 @@ try {
             let command = transcript(results, wordIndex);
             alert('command: ' + command);
 
-            const kottansErrors = ['cortana', 'cotons', 'cottons', 'buttons', 'cartoons'];
+            const kottansErrors = ['cortana', 'cotons', 'cottons', 'buttons', 'cartoons', 'kittens', 'curtains'];
             if(kottansErrors.includes(command.split(' ')[1])) {
                 command = 'hello kottans';
             }
@@ -161,11 +161,11 @@ try {
         stop(errorMessage);
     });
 
-    // recognition.addEventListener('end', (e) => {
-    //     if(!errorActive) {
-    //         stop();
-    //     }
-    // });
+    recognition.addEventListener('end', (e) => {
+        if(!errorActive) {
+            stop();
+        }
+    });
 
     voiceButton.addEventListener('click', () => {
         if(voiceButton.classList.contains('active')) {

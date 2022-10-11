@@ -78,8 +78,11 @@ try {
     }
 
     recognition.addEventListener('result', (e) => {
+        said.innerText = JSON.stringify(e);
         alert(JSON.stringify(e));
-        if(results[0].isFinal) {
+        said.innerText = e;
+        if(e.results[0].isFinal) {
+            const results = e.results;
             const wordIndex = results.length - 1;
             const str = results[wordIndex][0].transcript;
 

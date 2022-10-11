@@ -228,17 +228,17 @@ function initMap() {
     });
 
     //text.innerHTML = '';
-    text.innerHTML = objToString(map);
+    //text.innerHTML = objToString(map);
 
-    let geocoder = new google.maps.Geocoder();
-    let location = "Ukraine";
-    geocoder.geocode({ 'address': location }, function(results, status){
-        if (status == google.maps.GeocoderStatus.OK) {
-            map.setCenter(results[0].geometry.location);
-        } else {
-            alert("Could not find location: " + location);
-        }
-    });
+    // let geocoder = new google.maps.Geocoder();
+    // let location = "Ukraine";
+    // geocoder.geocode({ 'address': location }, function(results, status){
+    //     if (status == google.maps.GeocoderStatus.OK) {
+    //         map.setCenter(results[0].geometry.location);
+    //     } else {
+    //         alert("Could not find location: " + location);
+    //     }
+    // });
 
     //geolocation(map);
 }

@@ -9,6 +9,7 @@ const mapBlock = document.querySelector('#map');
 
 voiceButton.innerHTML = microphone;
 smallvoiceButton.innerHTML = microphone;
+text.innerHTML = helloScreen();
 
 let errorActive = false;
 
@@ -77,38 +78,21 @@ try {
         return helpCommandsHtml;
     }
 
-    function objToString (obj) {
-        var str = '';
-        for (var p in obj) {
-            //if (Object.prototype.hasOwnProperty.call(obj, p)) {
-                str += p + '::' + obj[p] + '\n';
-            //}
-        }
-        return str;
-    }
-
     recognition.addEventListener('result', ({ results }) => {
-        //said.innerText = objToString(e.results[0][0]);
-        //alert();
-        //alert(JSON.stringify(e));
-        //said.innerText = e;
         const wordIndex = results.length - 1;
+
         if(results[wordIndex].isFinal) {
-            //const results = e.results;
             const str = results[wordIndex][0].transcript;
 
             said.innerText = str;
 
             let command = transcript(results, wordIndex);
-            alert('command: ' + command);
 
             const kottansErrors = ['cortana', 'cotons', 'cottons', 'buttons', 'cartoons', 'kittens', 'curtains'];
             if(kottansErrors.includes(command.split(' ')[1])) {
                 command = 'hello kottans';
             }
 
-            //alert(JSON.stringify(results));
-            //close();
             switch(command) {
                 case 'close':
                     text.innerHTML = helloScreen();
@@ -152,13 +136,14 @@ try {
 
     recognition.addEventListener('error' , (e) => {
         console.log('error');
-        alert();
+        
         errorActive = true;
         let errorMessage = (e.error) ? 
                 'Audio capture blocked' :
                 'Error. Maybe, your browser doesn\'t support Speech Recognition API.<br>Please, try again.';
 
-        stop(errorMessage);
+        text.innerHTML = errorMessage;
+        stop();
     });
 
     recognition.addEventListener('end', (e) => {
@@ -169,11 +154,10 @@ try {
 
     voiceButton.addEventListener('click', () => {
         if(voiceButton.classList.contains('active')) {
-            alert(1);
            stop();
         }else {
             errorActive = false;
-            text.innerHTML = helloScreen();
+            //text.innerHTML = helloScreen();
             voiceButton.classList.add('active');
             recognition.start();
         }
@@ -188,20 +172,20 @@ try {
     }
 
     function helloScreen() {
-        voiceButton.classList.remove('hidden');
-        smallvoiceButton.classList.add('hidden');
+        //voiceButton.classList.remove('hidden');
+        //smallvoiceButton.classList.add('hidden');
         return `Say <em>'Help'</em> to show commands.`;
     }
 
-    function stop(message = '') {
-        text.classList.remove('hidden');
+    function stop() {
+        //text.classList.remove('hidden');
         voiceButton.classList.remove('active');
-        voiceButton.classList.remove('hidden');
-        smallvoiceButton.classList.add('hidden');
-        mapBlock.classList.add('hidden');
-alert(2);
-        text.innerHTML = message;
-        said.innerHTML = '';
+        //voiceButton.classList.remove('hidden');
+        //smallvoiceButton.classList.add('hidden');
+        //mapBlock.classList.add('hidden');
+
+        //text.innerHTML = message;
+        //said.innerHTML = '';
 
         recognition.stop();
     }

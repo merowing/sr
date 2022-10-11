@@ -13,6 +13,7 @@ main {
     background-color: white;
     margin: 0 auto;
     position: relative;
+    overflow: auto;
 }
 ul,
 h4 {
@@ -22,17 +23,19 @@ h4 {
 ul {
     list-style: none;
 }
-ul li,
+ul li {
+    padding-bottom: 40px;
+}
 h4 {
-    padding-bottom: 10px;
+    padding-bottom: 30px;
 }
 ul li span {
-    color: #2c2c2c;
+    color: #aaa;
     display: block;
     font-style: italic;
 }
 ul li span:first-child {
-    color: #aaa;
+    color: #000;
     font-style: normal;
 }
 svg {
@@ -52,9 +55,6 @@ svg {
     border: 1px solid #ccc;
     fill: #8a8a8a;
     cursor: pointer;
-}
-.voice-button:hover {
-    fill: #000;
 }
 .voice-button svg,
 .small-voice-button svg {

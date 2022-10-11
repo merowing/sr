@@ -77,6 +77,7 @@ try {
     }
 
     recognition.addEventListener('result', ({ results }) => {
+        alert(JSON.stringify(results));
         if(results[0].isFinal) {
             const wordIndex = results.length - 1;
             const str = results[wordIndex][0].transcript;
@@ -182,7 +183,7 @@ try {
         voiceButton.classList.remove('hidden');
         smallvoiceButton.classList.add('hidden');
         mapBlock.classList.add('hidden');
-
+alert(2);
         text.innerHTML = message;
         said.innerHTML = '';
 

@@ -7,7 +7,7 @@ const voiceButton = document.querySelector('.voice-button');
 voiceButton.innerHTML = microphoneIcon;
 try {
     const recognition = new webkitSpeechRecognition();
-
+    
     recognition.continuous = true;
     recognition.lang = 'en-US';
     recognition.interimResults = false;
@@ -118,8 +118,14 @@ try {
         console.log('error');
         
         let errorMessage = (e.error) ? 
-                'Error:<br>Audio capture blocked' :
-                'Error:<br>Maybe, your browser doesn\'t support Speech Recognition API.';
+                `
+                    <strong>Error:</strong><br>
+                    Audio capture blocked
+                ` :
+                `
+                    <strong>Error:</strong><br>
+                    Maybe, your browser doesn't support Speech Recognition API.
+                `;
 
         text.innerHTML = errorMessage;
         stop();
@@ -130,12 +136,8 @@ try {
     });
 
     voiceButton.addEventListener('click', () => {
-        if(voiceButton.classList.contains('active')) {
-           stop();
-        }else {
-            voiceButton.classList.add('active');
-            recognition.start();
-        }
+        voiceButton.classList.add('active');
+        recognition.start();
     });
 
     function close() {
@@ -159,7 +161,11 @@ try {
 
     function helloScreen() {
         text.classList.add('hello');
-        return `<h3>Hi!</h3>Tap the microphone icon and<br> say <strong>'Help'</strong> to show commands.`;
+        return `
+                <h3>Hi!</h3>
+                Tap the microphone icon and<br>
+                say <strong>'Help'</strong> to show commands.
+            `;
     }
     text.innerHTML = helloScreen();
 

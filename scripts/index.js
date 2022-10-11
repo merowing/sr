@@ -191,6 +191,7 @@ alert(2);
     }
 
     function unrecognized(str) {
+        alert(str);
         return `
                 <div>
                     <span style="color: red;">Unrecognized command.</span>

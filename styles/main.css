@@ -13,9 +13,14 @@ main {
     background-color: white;
     margin: 0 auto;
     position: relative;
-    overflow: overlay;
-    padding-bottom: 62px;
-    box-sizing: border-box;
+
+    display: grid;
+    grid-template-rows: 1fr 60px;
+    align-items: center;
+}
+.text-wrapper {
+    overflow: auto;
+    height: inherit;
 }
 ul,
 h4 {
@@ -48,13 +53,21 @@ svg {
     width: 214px;
     height: 180px;
 }
-.voice-button {
+footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    width: inherit;
     position: fixed;
+    bottom: 0;
+}
+.voice-button {
+    fill: #8a8a8a;
+
+    position: relative;
     width: 30px;
     height: 30px;
-    bottom: 0;
-    padding: 16px;
-    fill: #8a8a8a;
+    padding: 15px;
 }
 .voice-button svg,
 .small-voice-button svg {
@@ -99,12 +112,15 @@ svg {
 }
 .text {
     position: relative;
-    left: 0;
+    /* left: 0;
     top: 0;
     transform: none;
     padding: 0;
-    height: inherit;
+    height: inherit; */
     text-align: center;
+
+    height: inherit;
+    //overflow: auto;
 }
 .text > iframe {
     width: 100%;

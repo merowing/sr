@@ -45,16 +45,11 @@ svg {
 }
 .voice-button {
     position: fixed;
-    width: 60px;
-    height: 60px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 30px;
-    border-radius: 70px;
-    border: 1px solid #ccc;
+    width: 30px;
+    height: 30px;
+    bottom: 0;
+    padding: 16px;
     fill: #8a8a8a;
-    cursor: pointer;
 }
 .voice-button svg,
 .small-voice-button svg {
@@ -87,8 +82,20 @@ svg {
 }
 .text {
     text-align: center;
-    width: 100%;
-    padding: 20px 0;
+    width: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-style: italic;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.text.help {
+    position: relative;
+    left: 0;
+    top: 20px;
+    transform: none;
 }
 .text > div {
     padding-bottom: 10px;

@@ -83,7 +83,7 @@ try {
         if(results[wordIndex].isFinal) {
             const str = results[wordIndex][0].transcript;
 
-            said.innerText = str;
+            //said.innerText = str;
 
             let command = transcript(str);
 
@@ -103,6 +103,7 @@ try {
 
                 case 'help':
                 case 'info':
+                    text.classList.add('help');
                     text.innerHTML = help();
                     break;
 
@@ -138,8 +139,8 @@ try {
         
         errorActive = true;
         let errorMessage = (e.error) ? 
-                'Audio capture blocked' :
-                'Error. Maybe, your browser doesn\'t support Speech Recognition API.<br>Please, try again.';
+                'Error:<br>Audio capture blocked' :
+                'Error:<br>Maybe, your browser doesn\'t support Speech Recognition API.';
 
         text.innerHTML = errorMessage;
         stop();
@@ -173,7 +174,7 @@ try {
     function helloScreen() {
         //voiceButton.classList.remove('hidden');
         //smallvoiceButton.classList.add('hidden');
-        return `Tap microphone icon and<br> say <em>'Help'</em> to show commands.`;
+        return `<h3>Hi!</h3>Tap the microphone icon and<br> say <strong>'Help'</strong> to show commands.`;
     }
     text.innerHTML = helloScreen();
 
@@ -186,21 +187,22 @@ try {
 
         //text.innerHTML = message;
         //said.innerHTML = '';
+        text.innerHTML = helloScreen();
+        text.classList.remove('help');
 
         recognition.stop();
     }
 
     function unrecognized(str) {
         return `
-                <div>
-                    <span style="color: red;">Unrecognized command.</span>
-                </div>
-                <div>
-                    <span>You have said: <strong>${str}</strong></span>
-                </div>
-                <div>
-                    <span>List of commands say <em>'Help'</em></span>
-                </div>
+                <span style="color: red;">Unrecognized command.</span>
+                <br>
+                <span>
+                    <strong>${str}</strong>
+                </span>
+                <br>
+                <br>
+                <span>Say <strong>'Help'</strong> to show available commands</span>
             `;
     }
 

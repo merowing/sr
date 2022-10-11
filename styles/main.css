@@ -124,6 +124,9 @@ footer {
 .text.hidden {
     display: none;
 }
+.text.game {
+    font: bold 50px Arial;
+}
 #map {
     height: 100%;
 }

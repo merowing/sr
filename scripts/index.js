@@ -34,6 +34,10 @@ try {
                     name: 'map, location, my location',
                     description: 'show your location on the map',
                 },
+                {
+                    name: 'dice',
+                    description: 'The game in dice',
+                },
                 // {
                 //     name: 'game',
                 //     description: 'play the Memory pair game',
@@ -99,6 +103,11 @@ try {
                 case 'map':
                     initMap();
                     break;
+
+                case 'dice':
+                case 'yes':
+                    diceGame();
+                    break;
                 
                 // case 'game':
                 //     window.open('https://merowing.github.io/memory-pair-game/', '_blank');
@@ -108,6 +117,7 @@ try {
                     github();
                     break;
 
+                case 'no':
                 default:
                     unrecognized(str);
             }
@@ -139,6 +149,42 @@ try {
         voiceButton.classList.add('active');
         recognition.start();
     });
+
+    async function diceGame() {
+        text.classList.add('game');
+        let numbers = [];
+        const num = () => Math.round(Math.random() * 100);
+
+        let myNum = num();
+        text.innerHTML = myNum.toString();
+        numbers.push(myNum);
+
+        const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+        await sleep(2000);
+        text.classList.remove('game');
+        text.innerHTML = 'my turn';
+        
+        await sleep(2000);
+        const aiNum = num();
+        numbers.push(aiNum);
+        text.classList.add('game');
+        text.innerHTML = aiNum;
+
+        await sleep(2000);
+        text.classList.remove('game');
+        if(numbers[0] < numbers[1]) {
+            text.innerHTML = `You're fool.`;
+        }else {
+            text.innerHTML = 'Lucky.'
+        }
+        await sleep(2000);
+        text.innerHTML = `
+                <strong>Play again?</strong><br>
+                Yes or No
+            `;
+        await sleep(2000);
+    }
 
     function close() {
         text.classList.remove('hidden');

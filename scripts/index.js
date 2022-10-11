@@ -92,16 +92,16 @@ try {
         //alert();
         //alert(JSON.stringify(e));
         //said.innerText = e;
-        if(results[0].isFinal) {
+        const wordIndex = results.length - 1;
+        if(results[wordIndex].isFinal) {
             //const results = e.results;
-            const wordIndex = results.length - 1;
             const str = results[wordIndex][0].transcript;
 
             said.innerText = str;
 
             let command = transcript(results);
             alert('command: ' + command);
-            
+
             const kottansErrors = ['cortana', 'cotons', 'cottons', 'buttons', 'cartoons'];
             if(kottansErrors.includes(command.split(' ')[1])) {
                 command = 'hello kottans';
@@ -223,7 +223,7 @@ alert(2);
 
     function transcript(results) {
         const index = results.length - 1;
-        return results[index][0].transcript.toLowerCase().slice(0, -1);
+        return results[index][0].transcript.toLowerCase().match(/\w+/g).join(' ');
     }
 
 } catch(error) {

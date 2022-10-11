@@ -2,16 +2,9 @@ import logoIcon from './logo.js';
 import microphoneIcon from './micro.js';
 
 const text = document.querySelector('.text');
-//const said = document.querySelector('.said');
 const voiceButton = document.querySelector('.voice-button');
-//const smallvoiceButton = document.querySelector('.small-voice-button');
-//const mapBlock = document.querySelector('#map');
 
 voiceButton.innerHTML = microphoneIcon;
-//smallvoiceButton.innerHTML = microphone;
-
-//let errorActive = false;
-
 try {
     const recognition = new webkitSpeechRecognition();
 
@@ -41,10 +34,10 @@ try {
                     name: 'map, location, my location',
                     description: 'show your location on the map',
                 },
-                {
-                    name: 'game',
-                    description: 'play the Memory pair game',
-                },
+                // {
+                //     name: 'game',
+                //     description: 'play the Memory pair game',
+                // },
                 {
                     name: 'help, info',
                     description: 'this help',
@@ -79,16 +72,12 @@ try {
         if(results[wordIndex].isFinal) {
             const str = results[wordIndex][0].transcript;
 
-            //said.innerText = str;
-
             let command = transcript(str);
 
             const kottansErrors = ['cortana', 'cotons', 'cottons', 'buttons', 'cartoons', 'kittens', 'curtains'];
             if(kottansErrors.includes(command.split(' ')[1])) {
                 command = 'hello kottans';
             }
-
-            //text.classList.remove('help');
 
             switch(command) {
                 case 'close':
@@ -97,8 +86,6 @@ try {
 
                 case 'help':
                 case 'info':
-                    //text.classList.add('help');
-                    //text.innerHTML = help();
                     help();
                     break;
 
@@ -113,18 +100,15 @@ try {
                     initMap();
                     break;
                 
-                case 'game':
-                    window.open('https://merowing.github.io/memory-pair-game/', '_blank');
-                    break;
+                // case 'game':
+                //     window.open('https://merowing.github.io/memory-pair-game/', '_blank');
+                //     break;
 
                 case 'github':
-                    //window.open('https://github.com/merowing', '_blank');
                     github();
                     break;
 
                 default:
-                    //voiceButton.classList.remove('hidden');
-                    //smallvoiceButton.classList.add('hidden');
                     unrecognized(str);
             }
         }
@@ -201,9 +185,6 @@ try {
     }
 
     function transcript(str) {
-        //const index = results.length - 1;
-        //const str = results[index][0].transcript.toLowerCase();
-
         return str.toLowerCase().match(/[\w\s]+/g)[0];
     }
 
@@ -213,39 +194,19 @@ try {
 }
 
 function initMap() {
-    //text.innerHTML = `<div id="map"></div>`;
     text.classList.remove('hello');
-    //mapBlock.classList.remove('hidden');
-    //text.classList.add('hidden');
-    //smallvoiceButton.classList.remove('hidden');
 
     const map = new google.maps.Map(document.querySelector('#map'), {
         center: { lat: -34.397, lng: 150.644 },
         zoom: 6,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
-        //mapTypeControl: false,
-        //streetViewControl: false,
-        //fullscreenControl: false,
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: false,
     });
-
-    //text.innerHTML = '';
-    //text.innerHTML = objToString(map);
-
-    // let geocoder = new google.maps.Geocoder();
-    // let location = "Ukraine";
-    // geocoder.geocode({ 'address': location }, function(results, status){
-    //     if (status == google.maps.GeocoderStatus.OK) {
-    //         map.setCenter(results[0].geometry.location);
-    //     } else {
-    //         alert("Could not find location: " + location);
-    //     }
-    // });
 
     geolocation(map);
 }
-
-
-// window.initMap = initMap;
 
 function geolocation(map) {
     if(navigator.geolocation) {
@@ -276,5 +237,3 @@ function geolocation(map) {
         alert(`Geolocation API doesn't support your browser!`);
     }
 }
-text.style.display = 'none';
-initMap();

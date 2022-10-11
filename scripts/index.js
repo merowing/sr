@@ -76,8 +76,8 @@ try {
         return helpCommandsHtml;
     }
 
-    recognition.addEventListener('result', ({ results }) => {
-        alert(JSON.stringify(results));
+    recognition.addEventListener('result', (e) => {
+        alert(JSON.stringify(e));
         if(results[0].isFinal) {
             const wordIndex = results.length - 1;
             const str = results[wordIndex][0].transcript;

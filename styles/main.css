@@ -13,7 +13,7 @@ main {
     background-color: white;
     margin: 0 auto;
     position: relative;
-    overflow: auto;
+    overflow: overlay;
 }
 ul,
 h4 {
@@ -82,7 +82,7 @@ svg {
 }
 .text {
     text-align: center;
-    width: auto;
+    width: inherit;
     position: fixed;
     top: 50%;
     left: 50%;

@@ -187,8 +187,8 @@ try {
 
         //text.innerHTML = message;
         //said.innerHTML = '';
-        text.innerHTML = helloScreen();
-        text.classList.remove('help');
+        //text.innerHTML = helloScreen();
+        //text.classList.remove('help');
 
         recognition.stop();
     }

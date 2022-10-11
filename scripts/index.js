@@ -117,7 +117,6 @@ try {
     recognition.addEventListener('error' , (e) => {
         console.log('error');
         
-        errorActive = true;
         let errorMessage = (e.error) ? 
                 'Error:<br>Audio capture blocked' :
                 'Error:<br>Maybe, your browser doesn\'t support Speech Recognition API.';

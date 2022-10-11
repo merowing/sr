@@ -6,16 +6,37 @@
     </head>
 <body>
     <main>
-        <div class="text-wrapper">
-            <div class="text"></div>
-            <div id="map"></div>
-        </div>
-        <footer>
-            <div class="voice-button">Voice</div>
-        </footer>
+        <div id="googleMap" style="width:1030px;height:380px;"></div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDV9O4nd02xCwyy-AeAmFJ_dR3SKh5GKAE&callback=initialize" async defer></script>
+<script>
+function initialize()
+{
+var amsterdam=new google.maps.LatLng(34.0789742,-118.361875);
+var mapProp = {
+  center:amsterdam,
+  zoom:13,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+var myCity = new google.maps.Circle({
+  center:amsterdam,
+  radius:3000,
+  strokeColor:"#0000FF",
+  strokeOpacity:0.8,
+  strokeWeight:2,
+  fillColor:"#0000FF",
+  fillOpacity:0.4
+  });
+
+myCity.setMap(map);
+}
+
+</script>
     </main>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"></script>
-    <script type="module" src="./scripts/index.js"></script>
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg"></script>
+    <script type="module" src="./scripts/index.js"></script> -->
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&v=weekly" async defer></script> -->
     
 </body>

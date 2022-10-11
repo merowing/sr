@@ -212,69 +212,32 @@ try {
     alert(error);
 }
 
+var map;
+
 function initMap() {
-    //text.innerHTML = `<div id="map"></div>`;
-    text.classList.remove('hello');
-    //mapBlock.classList.remove('hidden');
-    //text.classList.add('hidden');
-    //smallvoiceButton.classList.remove('hidden');
 
-    let map = new google.maps.Map(document.querySelector('#map'), {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 6,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        //mapTypeControl: false,
-        //streetViewControl: false,
-        //fullscreenControl: false,
-    });
+  var LatLng = {
+    lat: 0.000,
+    lng: 0.000
+  };
 
-    //text.innerHTML = '';
-    //text.innerHTML = objToString(map);
+  var mapOptions = {
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    mapTypeControl: true,
+    fullscreenControl: false
+  }
 
-    // let geocoder = new google.maps.Geocoder();
-    // let location = "Ukraine";
-    // geocoder.geocode({ 'address': location }, function(results, status){
-    //     if (status == google.maps.GeocoderStatus.OK) {
-    //         map.setCenter(results[0].geometry.location);
-    //     } else {
-    //         alert("Could not find location: " + location);
-    //     }
-    // });
+  map = new google.maps.Map(document.getElementById("map"), {
+    mapOptions,
+    zoom: 4,
+    center: LatLng
+  });
 
-    geolocation(map);
+  var marker = new google.maps.Marker({
+    position: LatLng,
+    map: map,
+    title: 'Here am I'
+  });
+
 }
-
-
-// window.initMap = initMap;
-
-function geolocation(map) {
-    if(navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            const pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            };
-
-            let infoWindow = new google.maps.InfoWindow({map: map});
-            infoWindow.setPosition(pos);
-            infoWindow.setContent(`You\'re here.`);
-
-            let latlng = new google.maps.LatLng(pos.lat, pos.lng);
-            map.setCenter(latlng);
-            map.setZoom(8);
-
-            new google.maps.Marker({
-                map: map,
-                position: latlng,
-                title: 'You are here!',
-            });
-
-        }, function() {
-            alert(`You're block your location or browser doesn't support this api`);
-        });
-    }else {
-        alert(`Geolocation API doesn't support your browser!`);
-    }
-}
-text.style.display = 'none';
 initMap();

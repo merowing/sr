@@ -77,16 +77,27 @@ try {
         return helpCommandsHtml;
     }
 
+    function objToString (obj) {
+        var str = '';
+        for (var p in obj) {
+            //if (Object.prototype.hasOwnProperty.call(obj, p)) {
+                str += p + '::' + obj[p] + '\n';
+            //}
+        }
+        return str;
+    }
+
     recognition.addEventListener('result', (e) => {
-        said.innerText = JSON.stringify(e);
-        alert(JSON.stringify(e));
-        said.innerText = e;
+        said.innerText = objToString(e.results[0][0]);
+        //alert();
+        //alert(JSON.stringify(e));
+        //said.innerText = e;
         if(e.results[0].isFinal) {
             const results = e.results;
             const wordIndex = results.length - 1;
             const str = results[wordIndex][0].transcript;
 
-            said.innerText = str;
+            //said.innerText = str;
 
             let command = transcript(results);
             

@@ -87,26 +87,27 @@ try {
         return str;
     }
 
-    recognition.addEventListener('result', (e) => {
-        said.innerText = objToString(e.results[0][0]);
+    recognition.addEventListener('result', ({ results }) => {
+        //said.innerText = objToString(e.results[0][0]);
         //alert();
         //alert(JSON.stringify(e));
         //said.innerText = e;
-        if(e.results[0].isFinal) {
-            const results = e.results;
+        if(results[0].isFinal) {
+            //const results = e.results;
             const wordIndex = results.length - 1;
             const str = results[wordIndex][0].transcript;
 
-            //said.innerText = str;
+            said.innerText = str;
 
             let command = transcript(results);
+            alert('command: ' + command);
             
             const kottansErrors = ['cortana', 'cotons', 'cottons', 'buttons', 'cartoons'];
             if(kottansErrors.includes(command.split(' ')[1])) {
                 command = 'hello kottans';
             }
 
-            alert(JSON.stringify(results));
+            //alert(JSON.stringify(results));
             //close();
             switch(command) {
                 case 'close':

@@ -90,6 +90,7 @@ try {
                 command = 'hello kottans';
             }
 
+            alert(JSON.stringify(results));
             //close();
             switch(command) {
                 case 'close':

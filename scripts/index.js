@@ -213,18 +213,19 @@ try {
 }
 
 function initMap() {
-    text.innerHTML = `<div id="map"></div>`;
+    //text.innerHTML = `<div id="map"></div>`;
     text.classList.remove('hello');
     //mapBlock.classList.remove('hidden');
     //text.classList.add('hidden');
     //smallvoiceButton.classList.remove('hidden');
 
-    const map = new google.maps.Map(document.querySelector('#map'), {
+    let map = new google.maps.Map(document.querySelector('#map'), {
         center: { lat: -34.397, lng: 150.644 },
         zoom: 6,
-        mapTypeControl: false,
-        streetViewControl: false,
-        fullscreenControl: false,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        //mapTypeControl: false,
+        //streetViewControl: false,
+        //fullscreenControl: false,
     });
 
     //text.innerHTML = '';
@@ -275,3 +276,5 @@ function geolocation(map) {
         alert(`Geolocation API doesn't support your browser!`);
     }
 }
+text.style.display = 'none';
+initMap();

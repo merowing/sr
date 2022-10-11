@@ -227,7 +227,8 @@ function initMap() {
         fullscreenControl: false,
     });
 
-    alert(map);
+    //text.innerHTML = '';
+    text.innerHTML = objToString(map);
 
     let geocoder = new google.maps.Geocoder();
     let location = "Ukraine";
@@ -240,6 +241,16 @@ function initMap() {
     });
 
     //geolocation(map);
+}
+
+function objToString (obj) {
+    var str = '';
+    for (var p in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, p)) {
+            str += p + '::' + obj[p] + '\n';
+        }
+    }
+    return str;
 }
 
 // window.initMap = initMap;

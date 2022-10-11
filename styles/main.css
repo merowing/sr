@@ -14,6 +14,8 @@ main {
     margin: 0 auto;
     position: relative;
     overflow: overlay;
+    padding-bottom: 62px;
+    box-sizing: border-box;
 }
 ul,
 h4 {
@@ -80,25 +82,32 @@ svg {
 .small-voice-button.hidden {
     display: none;
 }
-.text {
+.text.hello {
     text-align: center;
     width: inherit;
     position: fixed;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-style: italic;
     padding: 0 10px;
     box-sizing: border-box;
+    height: auto;
 }
-.text.help {
+.text {
     position: relative;
     left: 0;
-    top: 20px;
+    top: 0;
     transform: none;
+    padding: 0;
+    height: inherit;
+    text-align: center;
 }
-.text > div {
-    padding-bottom: 10px;
+.text > iframe {
+    width: 100%;
+    box-sizing: border-box;
+    border: 0;
+    height: inherit;
 }
 .text.hidden {
     display: none;

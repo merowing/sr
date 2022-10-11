@@ -99,7 +99,7 @@ try {
 
             said.innerText = str;
 
-            let command = transcript(results);
+            let command = transcript(results, wordIndex);
             alert('command: ' + command);
 
             const kottansErrors = ['cortana', 'cotons', 'cottons', 'buttons', 'cartoons'];
@@ -207,7 +207,6 @@ alert(2);
     }
 
     function unrecognized(str) {
-        alert(str);
         return `
                 <div>
                     <span style="color: red;">Unrecognized command.</span>
@@ -221,9 +220,11 @@ alert(2);
             `;
     }
 
-    function transcript(results) {
-        const index = results.length - 1;
-        return results[index][0].transcript.toLowerCase().match(/\w+/g).join(' ');
+    function transcript(results, index) {
+        //const index = results.length - 1;
+        const str = results[index][0].transcript.toLowerCase();
+
+        return str.match(/[\w\s]+/g)[0];
     }
 
 } catch(error) {
